@@ -5,7 +5,6 @@ function WeatherApp() {
   const apiKey = "d9ac64f060c8d14585c1fc3742174016";
   const [weather, setWeather] = useState([{}]);
   const [city, setCity] = useState("");
-  
 
   const getWeather = (event) => {
     if (event.key === "Enter") {
@@ -16,7 +15,6 @@ function WeatherApp() {
         .then((data) => {
           setWeather(data);
           setCity("");
-          
         });
     }
   };
@@ -36,7 +34,11 @@ function WeatherApp() {
           <FcSearch />
         </button>
       </div>
-      {typeof weather.main != "undefined" ? (
+      {typeof weather.main === "undefined" ? (
+        <div className="message text-2xl font-semibold py-2 text-center">
+          Please enter city name to get weather details
+        </div>
+      ) : (
         <div className="weather-data">
           <div className="weather text-gray-100 text-center">
             <h2 className="city py-4 text-4xl font-semibold">
@@ -45,11 +47,11 @@ function WeatherApp() {
             <div className="temp">
               <div className="weather-icon"></div>
               <div className="text-6xl flex justify-center gap-2 text-black py-8 my-6 mx-auto font-semibold w-1/2 bg-blue-100 rounded-lg shadow-lg">
-              <img
-              src={`http://openweathermap.org/img/w/${weather.weather[0].icon}.png`}
-              alt="weather status icon"
-              className="weather-icon"
-            />
+                <img
+                  src={`http://openweathermap.org/img/w/${weather.weather[0].icon}.png`}
+                  alt="weather status icon"
+                  className="weather-icon"
+                />
                 {Math.round(weather.main.temp)} &deg;c
               </div>
             </div>
@@ -64,9 +66,8 @@ function WeatherApp() {
             </div>
           </div>
         </div>
-      ) : (
-        ""
       )}
+      
     </div>
   );
 }
