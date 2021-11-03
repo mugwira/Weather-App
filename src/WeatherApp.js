@@ -8,7 +8,8 @@ function WeatherApp() {
   const [error, setError] = useState(null);
 
   const getWeather = (event) => {
-    if (event.key === "Enter") {
+    event.preventDefault();
+    //if (event.key === "Enter") {
       fetch(
         `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`
       )
@@ -27,11 +28,12 @@ function WeatherApp() {
           setError(err.message);
           setWeather("")
         });
-    }
+    //}
   };
 
   return (
     <div className=" mx-auto w-1/2 min-w-max bg-blue-400 my-8  pb-8 rounded-xl">
+      <form action="" onSubmit={getWeather}>
       <div className="search flex justify-center items-center text-center py-8  ">
         <input
           className="border border-black px-2 min-w-min lg:w-96 h-10 outline-none bg-gray-300"
@@ -39,9 +41,9 @@ function WeatherApp() {
           placeholder="Enter City Name"
           onChange={(e) => setCity(e.target.value)}
           value={city}
-          onKeyPress={getWeather}
+          //onKeyPress={getWeather}
         />
-        <button className="border border-black px-4 h-10 text-2xl bg-gray-300">
+        <button className="border border-black px-4 h-10 text-2xl bg-gray-300" type="submit">
           <FcSearch />
         </button>
       </div>
@@ -91,6 +93,7 @@ function WeatherApp() {
           
         </div>
       )}
+      </form>
     </div>
   );
 }
