@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { FcSearch } from "react-icons/fc";
+import Zoom from 'react-reveal/Zoom'
 
 function WeatherApp() {
   const apiKey = "d9ac64f060c8d14585c1fc3742174016";
@@ -57,9 +58,10 @@ function WeatherApp() {
             <h2 className="city py-4 text-4xl font-semibold">
               {weather.name}, {weather.sys.country}
             </h2>
+            <Zoom duration={4000}>
             <div className="temp">
-              <div className="weather-icon"></div>
-              <div className="text-6xl flex justify-center gap-2 text-black py-8 my-6 mx-auto font-semibold w-1/2 bg-blue-100 rounded-lg shadow-lg">
+              <div className="text-4xl lg:text-6xl flex justify-center 
+              gap-2 text-black py-8 my-6 mx-auto font-semibold w-1/2 bg-blue-100 rounded-lg shadow-lg">
                 <img
                   src={`http://openweathermap.org/img/w/${weather.weather[0].icon}.png`}
                   alt="weather status icon"
@@ -68,10 +70,11 @@ function WeatherApp() {
                 {Math.round(weather.main.temp)} &deg;c
               </div>
             </div>
+            </Zoom>
             <div className="description pb-4 text-xl">
               {weather.weather[0].description}
             </div>
-            <div className="wind-speed flex items-center justify-center gap-32 text-black text-xl">
+            <div className="wind-speed flex items-center justify-center gap-32 text-black text-xl mx-8">
               <div className="humidity py-4">
                 Humidity: {weather.main.humidity}
               </div>
