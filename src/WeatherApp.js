@@ -33,7 +33,7 @@ function WeatherApp() {
   };
 
   return (
-    <div className=" mx-auto w-1/2 min-w-max bg-blue-400 my-8  pb-8 rounded-xl">
+    <div className=" mx-auto w-1/2 min-w-min bg-blue-400 my-8  pb-8 rounded-xl">
       <form action="" onSubmit={getWeather}>
       <div className="search flex justify-center items-center text-center py-8  ">
         <input
@@ -60,8 +60,8 @@ function WeatherApp() {
             </h2>
             <Zoom duration={4000}>
             <div className="temp">
-              <div className="text-4xl lg:text-6xl flex justify-center 
-              gap-2 text-black py-8 my-6 mx-auto font-semibold w-1/2 bg-blue-100 rounded-lg shadow-lg">
+              <div className="text-xl md:text-4xl lg:text-6xl flex justify-center items-center 
+              gap-8 md:gap-12 text-black py-4 my-6 mx-auto font-semibold w-1/2 bg-blue-100 rounded-lg shadow-lg">
                 <img
                   src={`http://openweathermap.org/img/w/${weather.weather[0].icon}.png`}
                   alt="weather status icon"
@@ -74,7 +74,7 @@ function WeatherApp() {
             <div className="description pb-4 text-xl">
               {weather.weather[0].description}
             </div>
-            <div className="wind-speed flex items-center justify-center gap-32 text-black text-xl mx-8">
+            <div className="wind-speed md:flex items-center justify-center gap-32 text-black text-sm lg:text-xl mx-8">
               <div className="humidity py-4">
                 Humidity: {weather.main.humidity}
               </div>
