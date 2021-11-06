@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { FcSearch } from "react-icons/fc";
 import Zoom from 'react-reveal/Zoom'
+import Slide from 'react-reveal/Slide'
+import Bounce from 'react-reveal/Bounce'
 
 function WeatherApp() {
   const apiKey = "d9ac64f060c8d14585c1fc3742174016";
@@ -78,7 +80,9 @@ function WeatherApp() {
               <div className="humidity py-4">
                 Humidity: {weather.main.humidity}
               </div>
-              <div className="wind">Wind speed: {weather.wind.speed}</div>
+              <Slide right duration={5000}>
+                <Bounce duration={8000}>
+              <div className="wind">Wind speed: {weather.wind.speed}</div></Bounce></Slide>
             </div>
           </div>
         </div>
