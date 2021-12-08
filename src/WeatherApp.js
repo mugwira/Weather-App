@@ -12,7 +12,7 @@ function WeatherApp() {
 
   const getWeather = (event) => {
     event.preventDefault();
-    //if (event.key === "Enter") {
+  
       fetch(
         `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`
       )
@@ -31,20 +31,22 @@ function WeatherApp() {
           setError(err.message);
           setWeather("")
         });
-    //}
+    
   };
 
   return (
     <div className=" mx-auto w-1/2 min-w-min bg-blue-400 my-8  pb-8 rounded-xl">
       <form action="" onSubmit={getWeather}>
+      <h1 className="text-4xl font-semibold text-center my-4 pt-4">Weather App</h1>
       <div className="search flex justify-center items-center text-center py-8  ">
+       
         <input
           className="border border-black px-2 min-w-min lg:w-96 h-10 outline-none bg-gray-300"
           type="text"
           placeholder="Enter City Name"
           onChange={(e) => setCity(e.target.value)}
           value={city}
-          //onKeyPress={getWeather}
+          
         />
         <button className="border border-black px-4 h-10 text-2xl bg-gray-300" type="submit">
           <FcSearch />
@@ -80,19 +82,12 @@ function WeatherApp() {
               <div className="humidity py-4">
                 Humidity: {weather.main.humidity}
               </div>
-              <Slide right duration={5000}>
-                <Bounce duration={8000}>
-              <div className="wind">Wind speed: {weather.wind.speed}</div></Bounce></Slide>
+              <div className="wind">Wind speed: {weather.wind.speed}</div>
             </div>
           </div>
         </div>
       )}
-      {/* {weather.cod === "404" ? (
-        <p className="text-red-600 text-center py-1">Error... Incorrect city name</p>
-      ) : (
-        <>
-        </>
-      )} */}
+     
       {error && (
         <div className="text-center text-red-600 text-sm py-1">
           {" "}
