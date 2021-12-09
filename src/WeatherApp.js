@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { FcSearch } from "react-icons/fc";
 import Zoom from 'react-reveal/Zoom'
-import Slide from 'react-reveal/Slide'
-import Bounce from 'react-reveal/Bounce'
+
 
 function WeatherApp() {
   const apiKey = "d9ac64f060c8d14585c1fc3742174016";
